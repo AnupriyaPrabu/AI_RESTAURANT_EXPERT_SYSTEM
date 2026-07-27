@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DineWise AI</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="overlay">
+
+        <div class="card">
+
+            <h1>🍽️ DineWise AI</h1>
+
+            <h2>Intelligent Restaurant Recommendation Expert System</h2>
+
+            <p class="description">
+                Find the perfect restaurant based on your cuisine,
+                budget, dietary preference, group size and preferred location.
+            </p>
+
+            <form action="/recommend" method="POST">
+
+                <!-- Cuisine -->
+
+                <div class="input-group">
+
+                    <label for="cuisine">
+                        Cuisine
+                    </label>
+
+                    <select id="cuisine" name="cuisine" required>
+
+                        <option value="" disabled selected>
+                            Select Cuisine
+                        </option>
+
+                        <option value="Pizza">Pizza</option>
+                        <option value="Biryani">Biryani</option>
+                        <option value="South Indian">South Indian</option>
+                        <option value="North Indian">North Indian</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Fast Food">Fast Food</option>
+                        <option value="Seafood">Seafood</option>
+                        <option value="Desserts">Desserts</option>
+                        <option value="Multi Cuisine">Multi Cuisine</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Budget -->
+
+                <div class="input-group">
+
+                    <label for="budget">
+                        Budget
+                    </label>
+
+                    <select id="budget" name="budget" required>
+
+                        <option value="" disabled selected>
+                            Select Budget
+                        </option>
+
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Veg Preference -->
+
+                <div class="input-group">
+
+                    <label for="veg">
+                        Veg Preference
+                    </label>
+
+                    <select id="veg" name="veg" required>
+
+                        <option value="" disabled selected>
+                            Select Preference
+                        </option>
+
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Group Size -->
+
+                <div class="input-group">
+
+                    <label for="group">
+                        Group Size
+                    </label>
+
+                    <select id="group" name="group" required>
+
+                        <option value="" disabled selected>
+                            Select Group Size
+                        </option>
+
+                        <option value="Solo">Solo</option>
+                        <option value="Couple">Couple</option>
+                        <option value="Small Group">Small Group</option>
+                        <option value="Family Group">Family Group</option>
+                        <option value="Large Group">Large Group</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Location -->
+
+                <div class="input-group">
+
+                    <label for="location">
+                        Location
+                    </label>
+
+                    <select id="location" name="location" required>
+
+                        <option value="" disabled selected>
+                            Select Location
+                        </option>
+
+                        <option value="Chennai">Chennai</option>
+                        <option value="Bangalore">Bangalore</option>
+                        <option value="Hyderabad">Hyderabad</option>
+                        <option value="Kochi">Kochi</option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit">
+
+                    🍴 Recommend Restaurant
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>DineWise AI - Recommendations</title>
+
+
+    <!-- Google Font -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="result-page">
+
+
+    <div class="result-container">
+
+
+        <!-- =================================================
+             HEADER
+             ================================================= -->
+
+        <h1>
+            DineWise AI
+        </h1>
+
+
+        <h2>
+            Your Restaurant Recommendations
+        </h2>
+
+
+        <p class="result-intro">
+
+            Based on your preferences,
+            here are the restaurants that best
+            match your requirements.
+
+        </p>
+
+
+        <!-- =================================================
+             RESTAURANTS
+             ================================================= -->
+
+        {% if recommendations %}
+
+
+            {% for item in recommendations %}
+
+
+            <div class="restaurant-card">
+
+
+                <!-- =========================================
+                     RESTAURANT IMAGE
+                     ========================================= -->
+
+                <div class="restaurant-image">
+
+
+                    {% if item.restaurant.image %}
+
+                        <img
+                            src="{{ url_for(
+                                'static',
+                                filename='images/' +
+                                item.restaurant.image
+                            ) }}"
+                            alt="{{ item.restaurant.name }}"
+                        >
+
+                    {% else %}
+
+                        <div class="no-image">
+
+                            🍽️
+
+                            <span>
+                                Image unavailable
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+
+                </div>
+
+
+                <!-- =========================================
+                     RESTAURANT CONTENT
+                     ========================================= -->
+
+                <div class="restaurant-content">
+
+
+                    <!-- HEADER -->
+
+                    <div class="restaurant-header">
+
+
+                        <h3>
+
+                            {{ loop.index }}.
+
+                            {{ item.restaurant.name }}
+
+                        </h3>
+
+
+                        <div class="score">
+
+                            {{ item.score }}/12
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- EXPLANATION -->
+
+                    <p class="explanation">
+
+                        {{ item.explanation }}
+
+                    </p>
+
+
+                    <!-- =====================================
+                         MATCHED RULES
+                         ===================================== -->
+
+                    <div class="rules-section">
+
+
+                        <h4>
+                            Matching Preferences
+                        </h4>
+
+
+                        <div class="rules-list">
+
+
+                            {% for rule in item.matched_rules %}
+
+                                <span class="rule-tag">
+
+                                    ✓ {{ rule }}
+
+                                </span>
+
+                            {% endfor %}
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- =====================================
+                         RESTAURANT DETAILS
+                         ===================================== -->
+
+                    <div class="restaurant-details">
+
+
+                        <div class="detail">
+
+                            <span class="detail-label">
+                                Cuisine
+                            </span>
+
+                            {{ item.restaurant.cuisine }}
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <span class="detail-label">
+                                Budget
+                            </span>
+
+                            {{ item.restaurant.budget }}
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <span class="detail-label">
+                                Veg
+                            </span>
+
+                            {{ item.restaurant.veg }}
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <span class="detail-label">
+                                Group
+                            </span>
+
+                            {{ item.restaurant.group }}
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            <span class="detail-label">
+                                Location
+                            </span>
+
+                            {{ item.restaurant.location }}
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            {% endfor %}
+
+
+        {% else %}
+
+
+            <!-- =================================================
+                 NO RESULTS
+                 ================================================= -->
+
+            <div class="no-results">
+
+                <div class="no-results-icon">
+                    🍽️
+                </div>
+
+
+                <h3>
+                    No Suitable Restaurants Found
+                </h3>
+
+
+                <p>
+                    Try changing your preferences
+                    and search again.
+                </p>
+
+            </div>
+
+
+        {% endif %}
+
+
+        <!-- =================================================
+             SEARCH AGAIN
+             ================================================= -->
+
+        <div class="back-btn">
+
+            <a href="/">
+                ← Search Again
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
